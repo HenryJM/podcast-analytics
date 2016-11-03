@@ -13,6 +13,12 @@ p.subtitle{
 	font-size: 1.5em;
 }
 
-header {
-	margin:10px;
+div.display-caption{
+	text-align: center;
+}
+
+
+p.display-caption{
+	text-align: center;
+	font-size: 2em;
 }

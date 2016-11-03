@@ -1,14 +1,57 @@
 <html>
 	<head>
 		<title>Podcast Analyzer</title>
-		<link rel="stylesheet" href="../css/styles.css" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i|Montserrat" rel="stylesheet">
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="../css/styles.css" type="text/css">
+		<script src="../js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<header>
-			<h1>Podcast Analyzer</h1>
+			<h1><i class="fa fa-headphones" aria-hidden="true"></i> Podcast Analyzer</h1>
 			<p class="subtitle">Podcast release statistics inspired by 
-				<a href="http://nerdstats.net/">Nerd Stats</a></p>
+				<a href="http://nerdstats.net/">Nerd Stats</a>.</p>
 		</header>
+
+		<div class="container well">
+			<form>
+				<div class="form-group">
+					<h4>RSS Feed<h4>
+					<div class="input-group">
+						<input type="rssurl" class="form-control" id="rssurl">
+						<span class="input-group-btn">
+							<button class="btn-primary btn">GO</button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-lg-1"><h4>Examples</h4></div>
+					<div class="btn-group col-lg-10">
+					  <button type="button" class="btn">Apple</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div class "container" id="loadingDisplay" style="display:none;">
+			<div class="row">
+				<div class="col-lg-2 col-lg-offset-5 display-caption">
+					<i class="fa fa-cog fa-spin fa-5x fa-fw"></i> <br/>
+					<p class='display-caption'>Working...</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class "container" id="errorDisplay" style="display:none;">
+			<div class="row">
+				<div class="col-lg-2 col-lg-offset-5 display-caption">
+					<i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i> <br/>
+					<p class='display-caption'>Error: <span id="errorMessage"></span></p>
+				</div>
+			</div>
+		</div>
+		
 	</body>
 </html>
