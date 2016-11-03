@@ -1,0 +1,18 @@
+h1 {
+	font-family: "Montserrat";
+	font-weight: 900;
+	font-size: 3em;
+	text-transform:uppercase;
+	text-align: center;
+}
+
+p.subtitle{
+	font-family: "Crimson Text";
+	text-align: center;
+	font-style: italic;
+	font-size: 1.5em;
+}
+
+header {
+	margin:10px;
+}
