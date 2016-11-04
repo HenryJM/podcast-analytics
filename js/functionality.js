@@ -3,7 +3,7 @@ function validateRssUrl(url){
 }
 
 function loadPlots(){
-	var CHARTS_TO_PLOT = ["chart1", "chart2"];
+	var CHARTS_TO_PLOT = ["releaseDelay"];
 	var rssUrl = encodeURIComponent($('#rssurl').val());
 	
 	if(validateRssUrl(rssUrl)){

@@ -18,6 +18,8 @@ import os
 import webapp2
 import jinja2
 import logging
+import json
+import analytics
 
 JINJA_ENVIRONMENT_AE = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -32,11 +34,12 @@ class MainHandler(webapp2.RequestHandler):
         
 class PlotHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write("Hello World")
         rssUrl = self.request.GET['rssUrl']
         charts = self.request.GET.getall('charts[]')
         logging.info(rssUrl + " " + str(charts))
-		
+        
+        self.response.write(analytics.make_plots(rssUrl, charts))
+        
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/plot', PlotHandler)
