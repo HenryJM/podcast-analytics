@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css" type="text/css">
 		<link rel="stylesheet" href="../css/styles.css" type="text/css">
 		<script src="../js/bootstrap.min.js"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	</head>
 	<body>
 		<header>
@@ -49,6 +50,23 @@
 				<div class="col-lg-2 col-lg-offset-5 display-caption">
 					<i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i> <br/>
 					<p class='display-caption'>Error: <span id="errorMessage"></span></p>
+				</div>
+			</div>
+		</div>
+		
+		<div class "container" id="infoDisplay" style="display:none;">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<h2>Hello Internet</h2>
+				</div>
+			</div>
+			
+			<!-- Release Delay Chart -->
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<h3>Release Delay</h3>
+				</div>
+				<div class="col-lg-8 col-lg-offset-2" id="chartReleaseDelay">
 				</div>
 			</div>
 		</div>
