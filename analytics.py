@@ -6,10 +6,12 @@ import chartmaker
 
 DAYS_IN_SECONDS = 3600 * 24
 
+BASIC_DATA_VARIABLES = ["title", "summary", "link", "updated", "authors"]
+
 def pull_and_clean_data(rss_source):
-    logging.info(rss_source)
     parseresult = feedparser.parse(rss_source)
-    logging.info(str(parseresult))
+    basic_data = {field: parseresult.feed[field] for field in BASIC_DATA_VARIABLES}
+    logging.info(basic_data)
     sorted_data = sorted([(time.mktime(entry.published_parsed), 
                            entry.title, entry.itunes_duration)
                       for entry in parseresult.entries], key= lambda x : x[0])
@@ -18,11 +20,6 @@ def pull_and_clean_data(rss_source):
     titles = [entry[1] for entry in sorted_data]
     duration_minutes = [utils.itunes_duration_to_minutes(entry[2]) 
                          for entry in sorted_data]
-    logging.info(sorted_data)
-    logging.info(publish_delay)
-    logging.info(titles)
-    logging.info(duration_minutes)
-    
     return sorted_data, publish_delay, titles, duration_minutes
 
     
@@ -31,7 +28,7 @@ def make_plots(rss_source, chart_names):
     = pull_and_clean_data(rss_source)
     
     chart_maker = chartmaker.ChartMaker(
-	sorted_data, publish_delay, titles, duration_minutes)
+    sorted_data, publish_delay, titles, duration_minutes)
     
     charts = chart_maker.make_charts(chart_names)
         

@@ -5,6 +5,7 @@ function validateRssUrl(url){
 function loadPlots(){
 	var rssUrl = encodeURIComponent($('#rssurl').val());
 	
+	$("#infoDisplay").hide();
 	$("#loadingDisplay").show();
 	
 	if(validateRssUrl(rssUrl)){
