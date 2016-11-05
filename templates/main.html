@@ -8,6 +8,13 @@
 		<link rel="stylesheet" href="../css/styles.css" type="text/css">
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
+		<script>
+			CHARTS_TO_PLOT = [
+				{% for entry in chart_names %}
+					"{{ entry }}",
+				{% endfor %}
+			]
+		</script>
 		<script src="../js/functionality.js"></script>
 		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	</head>
@@ -64,14 +71,16 @@
 				</div>
 			</div>
 			
-			<!-- Release Delay Chart -->
-			<div class="row" id="releaseDelay">
+			{% for entry in chart_names %}
+			<div class="row" id="{{ entry }}">
 				<div class="col-lg-10 col-lg-offset-1">
-					<h3>Release Delay</h3>
+					<h3>{{ chart_names[entry][1] }}</h3>
 				</div>
 				<div class="col-lg-8 col-lg-offset-2 chart">
 				</div>
 			</div>
+			{% endfor %}
+			
 		</div>
 		
 	</body>

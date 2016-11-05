@@ -21,6 +21,7 @@ import logging
 import json
 import urllib
 import analytics
+import idnamemethod
 
 JINJA_ENVIRONMENT_AE = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -30,7 +31,9 @@ JINJA_ENVIRONMENT_AE = jinja2.Environment(
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT_AE.get_template('templates/main.html')
-        self.response.write(template.render({}))
+        self.response.write(template.render({
+			'chart_names': idnamemethod.NAME_TO_METHOD
+		}))
 
         
 class PlotHandler(webapp2.RequestHandler):

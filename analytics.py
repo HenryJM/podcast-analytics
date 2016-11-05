@@ -1,8 +1,8 @@
 import time
-import plotlywrapper as pyw
 import feedparser
 import logging
 import utils
+import chartmaker
 
 DAYS_IN_SECONDS = 3600 * 24
 
@@ -30,11 +30,9 @@ def make_plots(rss_source, chart_names):
     sorted_data, publish_delay, titles, duration_minutes \
     = pull_and_clean_data(rss_source)
     
-    charts = dict()
+    chart_maker = chartmaker.ChartMaker(
+	sorted_data, publish_delay, titles, duration_minutes)
     
-    if 'releaseDelay' in chart_names:
-        charts['releaseDelay'] = pyw.line_plot_sma(publish_delay, titles, 
-        'Delay', 'Release Delay', 'Release Ordinal', 'Days Since Last Release', 
-        [5,10])
+    charts = chart_maker.make_charts(chart_names)
         
     return charts

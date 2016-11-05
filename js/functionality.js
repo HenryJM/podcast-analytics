@@ -3,7 +3,6 @@ function validateRssUrl(url){
 }
 
 function loadPlots(){
-	var CHARTS_TO_PLOT = ["releaseDelay"];
 	var rssUrl = encodeURIComponent($('#rssurl').val());
 	
 	$("#loadingDisplay").show();
