@@ -6,7 +6,7 @@ import chartmaker
 
 DAYS_IN_SECONDS = 3600 * 24
 
-BASIC_DATA_VARIABLES = ["title", "summary", "link", "updated", "authors"]
+BASIC_DATA_VARIABLES = ["title", "link", "updated", "authors"]
 
 def pull_and_clean_data(rss_source):
     parseresult = feedparser.parse(rss_source)
