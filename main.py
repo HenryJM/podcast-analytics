@@ -38,7 +38,7 @@ class PlotHandler(webapp2.RequestHandler):
         rssUrl = (self.request.GET['rssUrl']).encode('utf-8')
         rssUrl = urllib.unquote(urllib.unquote(rssUrl))
         charts = self.request.GET.getall('charts[]')
-        self.response.write(analytics.make_plots(rssUrl, charts))
+        self.response.write(json.dumps(analytics.make_plots(rssUrl, charts)))
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
