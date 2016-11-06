@@ -32,9 +32,9 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT_AE.get_template('templates/main.html')
         self.response.write(template.render({
-			'chart_names': idnamemethod.NAME_TO_METHOD
+			'chart_names': idnamemethod.NAMES,
+			'chart_name_to_method': idnamemethod.NAME_TO_METHOD
 		}))
-
         
 class PlotHandler(webapp2.RequestHandler):
     def get(self):

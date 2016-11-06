@@ -1,0 +1,10 @@
+<table class="table">
+	<tbody>
+		{% for key in stats %}
+		<tr>
+			<th>{{ key }}</th>
+			<td>{{ stats[key] }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

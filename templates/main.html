@@ -21,8 +21,8 @@
 	<body>
 		<header>
 			<h1><i class="fa fa-headphones" aria-hidden="true"></i> Podcast Analyzer</h1>
-			<p class="subtitle">Podcast release statistics inspired by 
-				<a href="http://nerdstats.net/">Nerd Stats</a>.</p>
+			<p class="subtitle subtitle-c">Podcast release statistics inspired by 
+				<a target="_blank" href="http://nerdstats.net/">Nerd Stats</a>.</p>
 		</header>
 
 		<div class="container well">
@@ -30,7 +30,7 @@
 				<div class="form-group">
 					<h4>RSS Feed<h4>
 					<div class="input-group">
-						<input type="rssurl" class="form-control" id="rssurl">
+						<input type="url" class="form-control" id="rssurl">
 						<span class="input-group-btn">
 							<button type='button' class="btn-primary btn" 
 							target="#" onclick="loadPlots();">GO</button>
@@ -67,14 +67,15 @@
 		<div class "container" id="infoDisplay" style="display:none;">
 			<div class="row">
 				<div class="col-lg-10 col-lg-offset-1">
-					<h2>Hello Internet</h2>
+					<h2><a  target="_blank" href="#" id="podcastTitle"></a></h2>
+					<p class="subtitle" id="podcastSubtitle"></p>
 				</div>
 			</div>
 			
 			{% for entry in chart_names %}
 			<div class="row" id="{{ entry }}">
 				<div class="col-lg-10 col-lg-offset-1">
-					<h3>{{ chart_names[entry][1] }}</h3>
+					<h3>{{ chart_name_to_method[entry][1] }}</h3>
 				</div>
 				<div class="col-lg-8 col-lg-offset-2 chart">
 				</div>

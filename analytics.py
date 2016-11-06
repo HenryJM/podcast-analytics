@@ -6,12 +6,18 @@ import chartmaker
 
 DAYS_IN_SECONDS = 3600 * 24
 
-BASIC_DATA_VARIABLES = ["title", "link", "updated", "authors"]
+TITLE_DATA_VARIABLES = ['title', 'subtitle', 'link']
+BASIC_DATA_VARIABLES = ['updated', 'author', 'published']
 
 def pull_and_clean_data(rss_source):
     parseresult = feedparser.parse(rss_source)
-    basic_data = {field: parseresult.feed[field] for field in BASIC_DATA_VARIABLES}
-    logging.info(basic_data)
+
+    # Title Data
+    title_data = {field: parseresult.feed[field] for field in TITLE_DATA_VARIABLES if field in parseresult.feed.keys()}
+
+    # Basic Data
+    basic_stats = {field: parseresult.feed[field] for field in BASIC_DATA_VARIABLES if field in parseresult.feed.keys()}
+
     sorted_data = sorted([(time.mktime(entry.published_parsed), 
                            entry.title, entry.itunes_duration)
                       for entry in parseresult.entries], key= lambda x : x[0])
@@ -20,16 +26,17 @@ def pull_and_clean_data(rss_source):
     titles = [entry[1] for entry in sorted_data]
     duration_minutes = [utils.itunes_duration_to_minutes(entry[2]) 
                          for entry in sorted_data]
-    return sorted_data, publish_delay, titles, duration_minutes
+    return title_data, basic_stats, sorted_data, publish_delay, titles, duration_minutes
 
     
 def make_plots(rss_source, chart_names):
-    sorted_data, publish_delay, titles, duration_minutes \
+    title_data, basic_stats, sorted_data, publish_delay, titles, duration_minutes \
     = pull_and_clean_data(rss_source)
     
     chart_maker = chartmaker.ChartMaker(
-    sorted_data, publish_delay, titles, duration_minutes)
+    basic_stats, sorted_data, publish_delay, titles, duration_minutes)
     
     charts = chart_maker.make_charts(chart_names)
+    charts['titleData'] = title_data
         
     return charts

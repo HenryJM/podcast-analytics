@@ -13,9 +13,12 @@ h2 {
 
 p.subtitle{
 	font-family: "Crimson Text";
-	text-align: center;
 	font-style: italic;
 	font-size: 1.5em;
+}
+
+p.subtitle-c{
+	text-align: center;
 }
 
 div.display-caption{
