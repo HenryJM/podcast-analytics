@@ -1,27 +1,42 @@
-function validateRssUrl(url){
-	return true;
-}
-
 function resizePlots(){
-	$.each($('.plotly-graph-div'), function(index, value){
+	$.each($(".plotly-graph-div"), function(index, value){
 		Plotly.Plots.resize(value);
 	});
 }
 
+function setValidation(validationStatus){
+	if(validationStatus){
+		console.log("hide invalid URL");
+		$("#invalidURL").hide();
+		$("#rssUrl").removeClass("form-control-error");
+		$("#rssFormGroup").removeClass("has-error");
+	} else {
+		$("#invalidURL").show();
+		$("#rssUrl").addClass("form-control-error");
+		$("#rssFormGroup").addClass("has-error");
+	}
+}
+
+function validateRssUrl(url){
+	var result = re_weburl.test(url);
+	setValidation(result);
+	return result;
+}
+
 function loadPlots(){
-	var rssUrl = encodeURIComponent($('#rssurl').val());
+	var rssUrl = $("#rssurl").val();
 	
 	$("#infoDisplay").hide();
-	$("#loadingDisplay").show();
 	
 	if(validateRssUrl(rssUrl)){
-		console.log(rssUrl);
+		$("#loadingDisplay").show();
+		
 		$.get( "/plot", {
 			rssUrl: encodeURIComponent(rssUrl),
 			charts: CHARTS_TO_PLOT} 
 		).done(function( data ) {
 			data = jQuery.parseJSON(data);
-			console.log(data);
+
 			$("#loadingDisplay").hide();
 			$("#infoDisplay").show();
 			

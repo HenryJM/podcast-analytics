@@ -15,6 +15,7 @@
 				{% endfor %}
 			]
 		</script>
+		<script src="../js/dperini-regex-weburl.js"></script>
 		<script src="../js/functionality.js"></script>
 		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	</head>
@@ -27,16 +28,20 @@
 
 		<div class="container well">
 			<form>
-				<div class="form-group">
-					<h4>RSS Feed<h4>
+				<div class="form-group" id="rssFormGroup">
+					<h4 class="form-control-label" for="rssurl">RSS Feed</h4>
 					<div class="input-group">
-						<input type="url" class="form-control" id="rssurl">
+						<input type="text" class="form-control" id="rssurl">
 						<span class="input-group-btn">
 							<button type='button' class="btn-primary btn" 
 							target="#" onclick="loadPlots();">GO</button>
 						</span>
 					</div>
+					<div id="invalidURL" class=".has-error .form-control-feedback"
+					style="display:none;">
+					Enter a valid URL.</div>
 				</div>
+				
 				<div class="form-group row">
 					<div class="col-lg-1"><h4>Examples</h4></div>
 					<div class="btn-group col-lg-10">
