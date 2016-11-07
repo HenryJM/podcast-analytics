@@ -2,6 +2,12 @@ function validateRssUrl(url){
 	return true;
 }
 
+function resizePlots(){
+	$.each($('.plotly-graph-div'), function(index, value){
+		Plotly.Plots.resize(value);
+	});
+}
+
 function loadPlots(){
 	var rssUrl = encodeURIComponent($('#rssurl').val());
 	
@@ -33,6 +39,8 @@ function loadPlots(){
 				$el.show();
 				$el.children(".chart").html(data[value]);
 			});
+			
+			window.onresize = resizePlots;
 		})
 	} else {
 	}
