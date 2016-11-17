@@ -57,6 +57,14 @@ function loadPlots(){
 			
 			window.onresize = resizePlots;
 		})
-	} else {
 	}
 }
+
+function autoLoadPlots(value){
+	$("#rssurl").val(value);
+	loadPlots();
+}
+
+$(".button-example").click(function(){
+	autoLoadPlots($(this).attr("data-target"));
+});
