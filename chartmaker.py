@@ -24,7 +24,7 @@ class ChartMaker:
         })
         
     def release_delay_chart(self):
-        return pyw.line_plot_sma(self.publish_delay, self.titles, 
+        return pyw.line_plot_sma(self.publish_delay, self.titles[1:], 
         'Delay', 'Release Delay', 'Release Ordinal', 'Days Since Last Release', 
         [5,10])
         
